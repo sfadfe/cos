@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}title{% endblock %}</title>
+  <link rel="stylesheet" href="/static/base.css">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/all.min.css">
+  {% block extra_css %}{% endblock %}
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">
+      <i class="fa-solid fa-plus"></i>
+      <a class="aa" href="/">Mathematics</a>
+    </div>
+    <ul class="navmenu">
+      <li><a class="aa" href="/">Home</a></li>
+      <li><a class="aa" href="/about">About</a></li>
+      <li><a class="aa" href="/contact">Contact</a></li>
+      <li><a class="aa" href="/login">Login</a></li>
+      <li><a class="aa" href="/donate">donate</a></li>
+    </ul>
+    <ul class="navbar__icons">
+      <li><i class="fa-solid fa-house" onclick="window.location.href = '/'"></i></li>
+      <li><i class="fab fa-slack"></i></li>
+    </ul>
+    <ul class="navbar__icons">
+      <li><i class="fa-solid fa-globe"></i></li>
+      <li><i class="fab fa-google"></i></li>
+    </ul>
+  </nav>
+  <div class="content-wrapper">
+    {% block content %}{% endblock %}
+  </div>
+  <footer>
+    <p>© 2025 sfadfe. All rights reserved.</p>
+    <p><i class="fa-brands fa-discord"></i> discord: aa_100</p>
+    <p><i class="fa-solid fa-envelope"></i> Mail: seojong2019@gmail.com</p>
+  </footer>
+</body>
+</html>
