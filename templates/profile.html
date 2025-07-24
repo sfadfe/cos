@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Profile{% endblock %}
+{% block extra_css %}
+    <link rel="stylesheet" href="/static/profile.css">
+    <link rel="stylesheet" href="/static/css/all.min.css">
+{% endblock %}
+{% block content %}
+{% endblock %}
+<h1>Profile</h1>
+<div class="profile-container">
+    <h2>Welcome, {{ username }}!</h2>
+    <p>Here you can manage your profile settings.</p>
+    <div class="profile-actions">
+        <button onclick="window.location.href='/auth/edit_profile'">Edit Profile</button>
+        <button onclick="window.location.href='/auth/change_password'">Change Password</button>
+    </div>

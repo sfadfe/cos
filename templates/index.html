@@ -1,17 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% extends "base.html" %}
     {% block title %}Home{% endblock %}
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
     {% block extra_css %}
-        <Link rel="stylesheet" href="/static/style.css">
+        <link rel="stylesheet" href="/static/style.css">
         <link rel="stylesheet" href="/static/css/all.min.css">
+        <link rel="stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     {% endblock %}
-
-</head>
-<body>
-    {% block content %} <h1 class="TwoMiddle">Hello, World!</h1> {% endblock %}
-</html>
+    {% block content %} 
+    <h1 class="TwoMiddle animate__animated animate__fadeIn">Hello, World!</h1>
+    {% endblock %}

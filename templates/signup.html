@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block title %}Sign Up{% endblock %}
+{% block extra_css %}
+    <link rel="stylesheet" href="/static/signup.css">
+    <link rel="stylesheet" href="/static/css/all.min.css">
+{% endblock %}
+
+{% block content %}
+<div class="signup-form-wrapper">
+    <div class="signup-form">
+        <div class='ddd'>Sign Up</div>
+        <form id="signup-form" method="post">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="form-group">
+                <label for="password2">비밀번호 확인</label>
+                <input type="password" id="password2" name="password2" required>
+            </div>
+            <button type="submit">가입하기</button>
+        </form>
+        <div id="signup-message"></div>
+        <div class="login-link">
+            이미 계정이 있으신가요? <a href="/signin">로그인하기</a>
+        </div>
+    </div>
+</div>
+
+<script>
+document.getElementById('signup-form').onsubmit = async function(e) {
+    e.preventDefault();
+    
+    const form = e.target;
+    if (form.password.value !== form.password2.value) {
+        document.getElementById('signup-message').textContent = "비밀번호가 일치하지 않습니다.";
+        return;
+    }
+
+    const data = {
+        username: form.username.value,
+        email: form.email.value,
+        password: form.password.value
+    };
+
+    try {
+        const res = await fetch('/auth/signup', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(data)
+        });
+
+        const msg = document.getElementById('signup-message');
+        if (res.ok) {
+            msg.textContent = "회원가입이 완료되었습니다.";
+            window.location.href = "/";  // 홈페이지로 리다이렉트
+        } else {
+            const err = await res.json();
+            msg.textContent = err.detail || "회원가입에 실패했습니다.";
+        }
+    } catch (error) {
+        document.getElementById('signup-message').textContent = "서버 오류가 발생했습니다.";
+    }
+};
+</script>
+{% endblock %}

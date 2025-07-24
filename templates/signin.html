@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}Login{% endblock %}
+{% block extra_css %}
+    <link rel="stylesheet" href="/static/signin.css">
+    <link rel="stylesheet" href="/static/css/all.min.css">
+{% endblock %}
+{% block content %}
+<div class="login-form-wrapper">
+    <div class="login-form">
+        <div class = 'ddd'>Sign In</div>
+        <form id="login-form" method="post">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit">Login</button>
+        </form>
+        <div id="login-message"></div>
+    </div>
+    </div>
+<script>
+document.getElementById('login-form').onsubmit = async function(e) {
+    e.preventDefault();
+    const form = e.target;
+    const data = {
+        username: form.username.value,
+        password: form.password.value
+    };
+    const res = await fetch('/auth/signin', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(data),
+        credentials: "include"
+    });
+    const msg = document.getElementById('login-message');
+    if (res.ok) {
+        msg.textContent = "Login successful!";
+        window.location.href = "/";
+    } else {
+        const err = await res.json();
+        msg.textContent = err.detail || "Login failed";
+    }
+};
+</script>
+{% endblock %}

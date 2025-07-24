@@ -10,6 +10,14 @@
   {% block extra_css %}{% endblock %}
 </head>
 <body>
+  <div id="sidebar" class="sidebar">
+  <button onclick="closeSidebar()" style="float:right;">닫기</button>
+  <h3>메뉴</h3>
+  <ul>
+    <li><i class="fa-solid fa-user"></i><span id = 'side-bar-username' >aaa</span></li>
+    <li><i class="fa-solid fa-house"></i><a href="/"> Home</a></li>
+  </ul>
+</div>
   <nav class="navbar">
     <div class="logo">
       <i class="fa-solid fa-plus"></i>
@@ -18,9 +26,13 @@
     <ul class="navmenu">
       <li><a class="aa" href="/">Home</a></li>
       <li><a class="aa" href="/about">About</a></li>
-      <li><a class="aa" href="/login">Sign In</a></li>
-      <li><a class="aa" href="/signin">Sign Up</a></li>
-      <li><a class="aa" href="/logout">Logout</a></li>
+      {% if username %}
+      <li><a class="aa" href="/auth/profile">Profile</a></li>
+      <li><a class="aa" href="/auth/logout">Log Out</a></li>
+      {% else %}
+      <li><a class="aa" href="/auth/signin">Sign In</a></li>
+      <li><a class="aa" href="/auth/signup">Sign Up</a></li>
+      {% endif %}
     </ul>
     <ul class="navbar__icons">
       <li><i class="fa-solid fa-house" onclick="window.location.href = '/'"></i></li>
@@ -28,7 +40,7 @@
     </ul>
     <ul class="navbar__icons">
       <li><i class="fa-solid fa-globe"></i></li>
-      <li><i class="fab fa-google"></i></li>
+      <li><i class="fa-solid fa-bars"></i></li>
     </ul>
   </nav>
   <div class="content-wrapper">
@@ -40,4 +52,27 @@
     <p><i class="fa-solid fa-envelope"></i> Mail: seojong2019@gmail.com</p>
   </footer>
 </body>
-</html>
+<script>
+function openSidebar() {
+  var username = '{{ username }}';
+  if (username && username !== 'None' && username !== '') {
+    document.getElementById('sidebar').classList.add('open');
+    document.getElementById('side-bar-username').innerText = username;
+  }
+}
+function closeSidebar() {
+  document.getElementById('sidebar').classList.remove('open');
+}
+
+document.addEventListener('click', function(event) {
+  const sidebar = document.getElementById('sidebar');
+  const barsIcon = document.querySelector('.fa-bars');
+  if (sidebar.classList.contains('open') && 
+      !sidebar.contains(event.target) && 
+      !barsIcon.contains(event.target)) {
+    closeSidebar();
+  }
+});
+
+document.querySelector('.fa-bars').onclick = openSidebar;
+</script>

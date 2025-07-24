@@ -1,7 +1,7 @@
 from jose import ExpiredSignatureError, JWTError, jwt
 from datetime import datetime, timedelta, timezone
 from config.settings import settings
-from fastapi import HTTPException
+from fastapi import HTTPException, Cookie
 from schemas.user import UserResponse
 
 
@@ -32,6 +32,11 @@ def verify_access_token(token: str) -> UserResponse:
             is_admin=payload["is_admin"],
         )
     except ExpiredSignatureError:
-        raise HTTPException(status_code=400, detail="Token has expired")
+        raise HTTPException(    status_code=400, detail="Token has expired")
     except JWTError:
         raise HTTPException(status_code=400, detail="Invalid token")
+    
+def get_current_user_from_token(access_token: str = Cookie(None)) -> UserResponse:
+    if not access_token:
+        raise HTTPException(status_code=401, detail="Not authenticated")
+    return verify_access_token(access_token)
