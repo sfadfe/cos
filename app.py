@@ -76,6 +76,30 @@ async def signin_post(request: Request):
     response.set_cookie(key="access_token", value=access_token, httponly=True)
     return response
 
-@app.get("/users")
-async def admin_dashboard(request: Request):
-    return templates.TemplateResponse("admin.html", {"request": request})
+@app.get("/profile")
+async def Profile(request: Request):
+    access_token = request.cookies.get("access_token")
+    context = {"request": request, "user": None, "username": None}
+
+    if access_token:
+        try:
+            user_data = verify_access_token(access_token)
+            context["user"] = user_data
+            context["username"] = user_data.username
+        except Exception:
+            response = RedirectResponse("/", status_code=302)
+            response.delete_cookie("access_token")
+            return response
+            
+    return templates.TemplateResponse("profile.html", context)
+
+@app.get("/admin")
+async def Admin(request: Request):
+    access_token = request.cookies.get("access_token")
+    context = {"request": request, "user": None, "username": None}
+    if access_token:
+        try:
+            pass
+        except:
+            pass
+    

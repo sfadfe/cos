@@ -4,6 +4,7 @@
     --footer-bg-color: #f5f5f5;
     --footer-text-color: #000000;
     --bar-footer-border-color: #b8b4b4;
+    --nav-bar-display: none;
 }
 
 body {

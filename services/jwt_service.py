@@ -32,7 +32,7 @@ def verify_access_token(token: str) -> UserResponse:
             is_admin=payload["is_admin"],
         )
     except ExpiredSignatureError:
-        raise HTTPException(    status_code=400, detail="Token has expired")
+        raise HTTPException(status_code=400, detail="Token has expired")
     except JWTError:
         raise HTTPException(status_code=400, detail="Invalid token")
     

@@ -1,2 +1,13 @@
 .venv/
 .env
+sql_app.db
+__pycache__/
+*.pyc
+instance/
+*.sqlite3
+.DS_Store
+.idea/
+.vscode/
+*.log
+*.env
+*.pot

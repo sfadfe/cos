@@ -1,17 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    {% extends "base.html" %}
-    {% block extra_css %}
-        <link rel="stylesheet" href="/static/about.css">
-    {% endblock %}
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel = stylesheet href=static/about.css>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="static/css/all.min.css">
-    <title>{% block title %}about{% endblock %}</title>
-</head>
+{% extends "base.html" %}
+{% block extra_css %}
+    <link rel="stylesheet" href="/static/about.css">
+{% endblock %}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="static/about.css">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="static/css/all.min.css">
+<title>{% block title %}about{% endblock %}</title>
 <body>
     {% block content %}    
     {% endblock %}

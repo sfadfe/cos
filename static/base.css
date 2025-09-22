@@ -1,9 +1,10 @@
 :root{
-    --icons-menu-color: #f5f5f5;
+    --icons-menu-color: #181313;
     --navbar-bg-color: #2c2c2c;
     --footer-bg-color: #f5f5f5;
     --footer-text-color: #333333;
     --bar-footer-border-color: #b8b4b4;
+    --nav-bar-display: block;
 }
 
 .navbar {
@@ -35,7 +36,6 @@
 .aa {
   text-decoration: none;
   padding: 8px 27px;
-  color: var(--icons-menu-color);
 }
 
 .logo i {
@@ -59,6 +59,7 @@
 
 .logo {
   margin-right: 175px;
+
 }
 
 footer {
@@ -145,4 +146,15 @@ footer i.fa-discord {
     padding: 8px 8px;
     font-size: 15px;
   }
+}
+
+.navbar a,
+.navmenu a.aa,
+.navmenu a.aa:link,
+.navmenu a.aa:visited,
+.navmenu a.aa:hover,
+.navmenu a.aa:active,
+.navmenu a.aa:focus {
+  color: #f5f5f5;
+  text-decoration: none;
 }

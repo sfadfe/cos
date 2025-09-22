@@ -15,23 +15,23 @@
   <h3>메뉴</h3>
   <ul>
     <li><i class="fa-solid fa-user"></i><span id = 'side-bar-username' >aaa</span></li>
-    <li><i class="fa-solid fa-house"></i><a href="/"> Home</a></li>
+    <li><i class="fa-solid fa-house"></i><a href="/">Home</a></li>
   </ul>
 </div>
   <nav class="navbar">
     <div class="logo">
       <i class="fa-solid fa-plus"></i>
-      <a class="aa" href="/">Mathematics</a>
+      <a class="aa" href="/">aa_100</a>
     </div>
     <ul class="navmenu">
       <li><a class="aa" href="/">Home</a></li>
       <li><a class="aa" href="/about">About</a></li>
       {% if username %}
-      <li><a class="aa" href="/auth/profile">Profile</a></li>
+      <li><a class="aa" href="/profile">Profile</a></li>
       <li><a class="aa" href="/auth/logout">Log Out</a></li>
       {% else %}
-      <li><a class="aa" href="/auth/signin">Sign In</a></li>
-      <li><a class="aa" href="/auth/signup">Sign Up</a></li>
+      <li><a class="aa" href="/auth/signin" target="_blank">Sign In</a></li>
+      <li><a class="aa" href="/auth/signup" target="_blank">Sign Up</a></li>
       {% endif %}
     </ul>
     <ul class="navbar__icons">

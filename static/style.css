@@ -4,7 +4,7 @@
     --footer-bg-color: #f5f5f5;
     --footer-text-color: #ffffff;
     --bar-footer-border-color: #444444;
-    --animate-duration: 10ms;
+    --animate-duration: 5000ms;
     --animate-delay: 50ms;
 }
 
@@ -12,15 +12,13 @@ body {
     background-color: black;
     font-family: Arial, sans-serif;
     margin: 0;
-}
-
-h1 {
-    color: white;
-    font-family: Arial, sans-serif;
-    font-size: 40px;
+    padding-top: 60px;
+    min-height: calc(100vh - 60px);
 }
 
 .TwoMiddle  {
+    color: white;
+    font-family: Arial, sans-serif;
     display: flex;
     align-items: center;
     min-height: 100vh;
@@ -28,4 +26,6 @@ h1 {
     text-align: center;
     animation-duration: var(--animate-duration);
     animation-delay: var(--animate-delay);
+    font-size: 40px;
+    font-weight: 700;
 }   
