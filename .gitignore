@@ -1,2 +1,14 @@
 .venv/
 .env
+
+# Python bytecode
+__pycache__/
+*.py[cod]
+*.pyc
+
+# Database
+*.db
+*.sqlite3
+
+# Misc
+report.txt
